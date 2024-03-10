@@ -1,4 +1,4 @@
-module avatar_service_grpc
+module github.com/CapyDevelop/avatar_service_grpc
 
 go 1.19
 

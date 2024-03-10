@@ -1,0 +1,20 @@
+syntax = 'proto3';
+
+package avatar_service;
+
+option go_package = "./avatar_go";
+
+service AvatarService {
+  rpc SetAvatar (stream SetAvatarRequest) returns (SetAvatarResponse) {}
+}
+
+message SetAvatarRequest {
+  string nickname = 1;
+  bytes data = 2;
+  string filename = 3;
+}
+
+message SetAvatarResponse {
+  int32 status = 1;
+  string description = 2;
+}

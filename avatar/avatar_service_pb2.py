@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14\x61vatar_service.proto\x12\x0e\x61vatar_service\"D\n\x10SetAvatarRequest\x12\x10\n\x08nickname\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\"8\n\x11SetAvatarResponse\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t2e\n\rAvatarService\x12T\n\tSetAvatar\x12 .avatar_service.SetAvatarRequest\x1a!.avatar_service.SetAvatarResponse\"\x00(\x01\x42\rZ\x0b./avatar_gob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14\x61vatar_service.proto\x12\x0e\x61vatar_service\"@\n\x10SetAvatarRequest\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\"H\n\x11SetAvatarResponse\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x0e\n\x06\x61vatar\x18\x03 \x01(\t2e\n\rAvatarService\x12T\n\tSetAvatar\x12 .avatar_service.SetAvatarRequest\x1a!.avatar_service.SetAvatarResponse\"\x00(\x01\x42\rZ\x0b./avatar_gob\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -23,9 +23,9 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
   _globals['DESCRIPTOR']._serialized_options = b'Z\013./avatar_go'
   _globals['_SETAVATARREQUEST']._serialized_start=40
-  _globals['_SETAVATARREQUEST']._serialized_end=108
-  _globals['_SETAVATARRESPONSE']._serialized_start=110
-  _globals['_SETAVATARRESPONSE']._serialized_end=166
-  _globals['_AVATARSERVICE']._serialized_start=168
-  _globals['_AVATARSERVICE']._serialized_end=269
+  _globals['_SETAVATARREQUEST']._serialized_end=104
+  _globals['_SETAVATARRESPONSE']._serialized_start=106
+  _globals['_SETAVATARRESPONSE']._serialized_end=178
+  _globals['_AVATARSERVICE']._serialized_start=180
+  _globals['_AVATARSERVICE']._serialized_end=281
 # @@protoc_insertion_point(module_scope)

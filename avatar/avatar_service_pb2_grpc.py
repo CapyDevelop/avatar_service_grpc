@@ -19,12 +19,23 @@ class AvatarServiceStub(object):
                 request_serializer=avatar__service__pb2.SetAvatarRequest.SerializeToString,
                 response_deserializer=avatar__service__pb2.SetAvatarResponse.FromString,
                 )
+        self.GetAvatar = channel.unary_unary(
+                '/avatar_service.AvatarService/GetAvatar',
+                request_serializer=avatar__service__pb2.GetAvatarRequest.SerializeToString,
+                response_deserializer=avatar__service__pb2.GetAvatarResponse.FromString,
+                )
 
 
 class AvatarServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def SetAvatar(self, request_iterator, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetAvatar(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -37,6 +48,11 @@ def add_AvatarServiceServicer_to_server(servicer, server):
                     servicer.SetAvatar,
                     request_deserializer=avatar__service__pb2.SetAvatarRequest.FromString,
                     response_serializer=avatar__service__pb2.SetAvatarResponse.SerializeToString,
+            ),
+            'GetAvatar': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetAvatar,
+                    request_deserializer=avatar__service__pb2.GetAvatarRequest.FromString,
+                    response_serializer=avatar__service__pb2.GetAvatarResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -62,5 +78,22 @@ class AvatarService(object):
         return grpc.experimental.stream_unary(request_iterator, target, '/avatar_service.AvatarService/SetAvatar',
             avatar__service__pb2.SetAvatarRequest.SerializeToString,
             avatar__service__pb2.SetAvatarResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetAvatar(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/avatar_service.AvatarService/GetAvatar',
+            avatar__service__pb2.GetAvatarRequest.SerializeToString,
+            avatar__service__pb2.GetAvatarResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

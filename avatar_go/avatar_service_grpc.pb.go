@@ -20,6 +20,7 @@ const _ = grpc.SupportPackageIsVersion7
 
 const (
 	AvatarService_SetAvatar_FullMethodName = "/avatar_service.AvatarService/SetAvatar"
+	AvatarService_GetAvatar_FullMethodName = "/avatar_service.AvatarService/GetAvatar"
 )
 
 // AvatarServiceClient is the client API for AvatarService service.
@@ -27,6 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AvatarServiceClient interface {
 	SetAvatar(ctx context.Context, opts ...grpc.CallOption) (AvatarService_SetAvatarClient, error)
+	GetAvatar(ctx context.Context, in *GetAvatarRequest, opts ...grpc.CallOption) (*GetAvatarResponse, error)
 }
 
 type avatarServiceClient struct {
@@ -71,11 +73,21 @@ func (x *avatarServiceSetAvatarClient) CloseAndRecv() (*SetAvatarResponse, error
 	return m, nil
 }
 
+func (c *avatarServiceClient) GetAvatar(ctx context.Context, in *GetAvatarRequest, opts ...grpc.CallOption) (*GetAvatarResponse, error) {
+	out := new(GetAvatarResponse)
+	err := c.cc.Invoke(ctx, AvatarService_GetAvatar_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AvatarServiceServer is the server API for AvatarService service.
 // All implementations must embed UnimplementedAvatarServiceServer
 // for forward compatibility
 type AvatarServiceServer interface {
 	SetAvatar(AvatarService_SetAvatarServer) error
+	GetAvatar(context.Context, *GetAvatarRequest) (*GetAvatarResponse, error)
 	mustEmbedUnimplementedAvatarServiceServer()
 }
 
@@ -85,6 +97,9 @@ type UnimplementedAvatarServiceServer struct {
 
 func (UnimplementedAvatarServiceServer) SetAvatar(AvatarService_SetAvatarServer) error {
 	return status.Errorf(codes.Unimplemented, "method SetAvatar not implemented")
+}
+func (UnimplementedAvatarServiceServer) GetAvatar(context.Context, *GetAvatarRequest) (*GetAvatarResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAvatar not implemented")
 }
 func (UnimplementedAvatarServiceServer) mustEmbedUnimplementedAvatarServiceServer() {}
 
@@ -125,13 +140,36 @@ func (x *avatarServiceSetAvatarServer) Recv() (*SetAvatarRequest, error) {
 	return m, nil
 }
 
+func _AvatarService_GetAvatar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAvatarRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AvatarServiceServer).GetAvatar(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AvatarService_GetAvatar_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AvatarServiceServer).GetAvatar(ctx, req.(*GetAvatarRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AvatarService_ServiceDesc is the grpc.ServiceDesc for AvatarService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AvatarService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "avatar_service.AvatarService",
 	HandlerType: (*AvatarServiceServer)(nil),
-	Methods:     []grpc.MethodDesc{},
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetAvatar",
+			Handler:    _AvatarService_GetAvatar_Handler,
+		},
+	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "SetAvatar",

@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14\x61vatar_service.proto\x12\x0e\x61vatar_service\"@\n\x10SetAvatarRequest\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\"H\n\x11SetAvatarResponse\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x0e\n\x06\x61vatar\x18\x03 \x01(\t2e\n\rAvatarService\x12T\n\tSetAvatar\x12 .avatar_service.SetAvatarRequest\x1a!.avatar_service.SetAvatarResponse\"\x00(\x01\x42\rZ\x0b./avatar_gob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14\x61vatar_service.proto\x12\x0e\x61vatar_service\"@\n\x10SetAvatarRequest\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\"H\n\x11SetAvatarResponse\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x0e\n\x06\x61vatar\x18\x03 \x01(\t\" \n\x10GetAvatarRequest\x12\x0c\n\x04uuid\x18\x01 \x01(\t\"H\n\x11GetAvatarResponse\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x0e\n\x06\x61vatar\x18\x03 \x01(\t2\xb9\x01\n\rAvatarService\x12T\n\tSetAvatar\x12 .avatar_service.SetAvatarRequest\x1a!.avatar_service.SetAvatarResponse\"\x00(\x01\x12R\n\tGetAvatar\x12 .avatar_service.GetAvatarRequest\x1a!.avatar_service.GetAvatarResponse\"\x00\x42\rZ\x0b./avatar_gob\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -26,6 +26,10 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_SETAVATARREQUEST']._serialized_end=104
   _globals['_SETAVATARRESPONSE']._serialized_start=106
   _globals['_SETAVATARRESPONSE']._serialized_end=178
-  _globals['_AVATARSERVICE']._serialized_start=180
-  _globals['_AVATARSERVICE']._serialized_end=281
+  _globals['_GETAVATARREQUEST']._serialized_start=180
+  _globals['_GETAVATARREQUEST']._serialized_end=212
+  _globals['_GETAVATARRESPONSE']._serialized_start=214
+  _globals['_GETAVATARRESPONSE']._serialized_end=286
+  _globals['_AVATARSERVICE']._serialized_start=289
+  _globals['_AVATARSERVICE']._serialized_end=474
 # @@protoc_insertion_point(module_scope)
